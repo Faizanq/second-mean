@@ -30,5 +30,12 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Commands
 
-npm install express mongoose mongoose-timestamp bootstrap jquery
-ng add @angular/material
+# npm install express mongoose mongoose-timestamp bootstrap jquery
+
+# ng add @angular/material
+
+## 18-Aug-2019
+
+# Change in server file
+# Change in routes
+# Change in models

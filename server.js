@@ -1,6 +1,6 @@
 const express = require('express');
 const path    = require('path');
-
+const mongoose = require('mongoose');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -12,6 +12,21 @@ app.use(express.static(path.join(__dirname,'public')));
 
 //root path
 app.use('/',express.static(path.join(__dirname,'public')));
+
+//Lets accept the post data
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
+
+//Lets establish the database connection
+mongoose.connect('mongodb://localhost:27017/second-mean-db',{
+  useNewUrlParser:true,
+},function(err){
+  if(err){
+    console.log('Database not connected');
+    process.exit();
+  }
+  console.log('Database conneted successfully');
+})
 
 app.use('/api/task',Task);
 
