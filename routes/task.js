@@ -3,13 +3,16 @@ const express = require('express');
 const routes = express.Router();
 const Task   = require('../models/task');
 
+//Get the all task
 routes.get('/',async (req,res)=>{
 
   let tasks = await Task.find({});
 
-  res.json({messgae:'Task list',tasks:tasks});
+  res.json(tasks);
 });
 
+
+//Add the task
 routes.post('/',(req,res)=>{
 
   let task = new Task({
@@ -24,6 +27,7 @@ routes.post('/',(req,res)=>{
 
 });
 
+//Edit the task
 routes.put('/:id',async(req,res)=>{
 
   console.log(req.params.id,req.body);
@@ -39,6 +43,7 @@ routes.put('/:id',async(req,res)=>{
     }
 });
 
+//Delete the task
 routes.delete('/:id',async(req,res)=>{
   let task = await Task.findByIdAndDelete(req.params.id);
   if(task){
