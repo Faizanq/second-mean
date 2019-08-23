@@ -1,7 +1,7 @@
 const express = require('express');
 const path    = require('path');
 const mongoose = require('mongoose');
-
+const cors     = require('cors');
 const app = express();
 const port = process.env.PORT || 3000;
 const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
@@ -13,6 +13,9 @@ app.use(express.static(path.join(__dirname,'public')));
 //root path
 app.use('/',express.static(path.join(__dirname,'public')));
 
+
+//Enable cors
+app.use(cors());
 //Lets accept the post data
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));

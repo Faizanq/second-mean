@@ -33,7 +33,8 @@ routes.put('/:id',async(req,res)=>{
   console.log(req.params.id,req.body);
 
   let task = await Task.findByIdAndUpdate(req.params.id,{
-    title:req.body.title
+    title:req.body.title,
+    isCompleted:req.body.isCompleted,
   });
 
   if(task){

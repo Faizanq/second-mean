@@ -19,7 +19,8 @@
           <!-- Weight Column -->
           <ng-container matColumnDef="isCompleted">
             <th mat-header-cell *matHeaderCellDef> isCompleted </th>
-            <td mat-cell *matCellDef="let element"> {{element.isCompleted}} </td>
+            <!-- <td mat-cell *matCellDef="let element"> {{element.isCompleted}} </td> -->
+            <mat-slide-toggle *matCellDef="let element" [checked]="element.isCompleted" (change)="changeStatus(element)">{{element.isCompleted}}</mat-slide-toggle>
           </ng-container>
 
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

@@ -13,4 +13,7 @@ export class TaskService {
   Task():Observable<TaskSchema[]>{
     return this._http.get<TaskSchema[]>('http://localhost:3000/api/task');
   }
+  changeStatus(element):Observable<any>{
+    return this._http.put<any>(`http://localhost:3000/api/task/${element._id}`,element)
+  }
 }

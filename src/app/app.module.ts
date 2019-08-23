@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskComponent } from './task/task.component';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { TaskService} from './Services/task.service'
 
@@ -21,6 +23,8 @@ import { TaskService} from './Services/task.service'
     BrowserAnimationsModule,
     MatTableModule,
     MatPaginatorModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
     HttpClientModule
   ],
   providers: [TaskService],
