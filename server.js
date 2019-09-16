@@ -25,6 +25,7 @@ mongoose.connect('mongodb://localhost:27017/second-mean-db',{
   useNewUrlParser:true,
 },function(err){
   if(err){
+    console.log(err);
     console.log('Database not connected');
     process.exit();
   }

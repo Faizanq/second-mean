@@ -12,7 +12,7 @@ import { TaskSchema } from '../Interface/task';
 })
 export class TaskComponent implements OnInit {
 
-  displayedColumns: string[] = ['_id', 'title', 'isCompleted'];
+  displayedColumns: string[] = ['_id', 'title', 'isCompleted','Actions'];
   dataSource:MatTableDataSource<TaskSchema>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -23,6 +23,7 @@ export class TaskComponent implements OnInit {
 
   ngOnInit() {
     this.taskService.Task().subscribe(responseData=>{
+
       this.dataSource = new MatTableDataSource<TaskSchema>(responseData);
       this.dataSource.paginator = this.paginator;
     })
@@ -35,6 +36,16 @@ export class TaskComponent implements OnInit {
         duration:5000
       })
       console.log(responseData.messgae);
+    });
+  }
+
+  deleteTask(element){
+    let id = element._id;
+    this.taskService.DeleteTask(id).subscribe(responseData=>{
+      console.log(responseData);
+      this.snackbar.open(responseData.messgae,'close',{
+        duration:5000
+      })
     });
   }
 

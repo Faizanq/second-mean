@@ -16,4 +16,11 @@ export class TaskService {
   changeStatus(element):Observable<any>{
     return this._http.put<any>(`http://localhost:3000/api/task/${element._id}`,element)
   }
+  AddTask(data):Observable<any>{
+    return this._http.post<any>(`http://localhost:3000/api/task/`,data)
+  }
+
+  DeleteTask(id):Observable<any>{
+    return this._http.delete<any>(`http://localhost:3000/api/task/${id}`);
+  }
 }

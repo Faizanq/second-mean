@@ -1,22 +1,35 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskComponent } from './task/task.component';
-import {MatTableModule} from '@angular/material/table';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+import {MatTableModule,
+        MatPaginatorModule,
+        MatSlideToggleModule,
+        MatDialogModule,
+        MatSnackBarModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatIconModule,
+} from '@angular/material';
+
+
 import { HttpClientModule } from '@angular/common/http';
-import { TaskService} from './Services/task.service'
+import { TaskService} from './Services/task.service';
+import { AddTaskComponent,AddTaskDialogComponent } from './task/add-task.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent
+    TaskComponent,
+    AddTaskComponent,
+    AddTaskDialogComponent
   ],
+  entryComponents:[AddTaskDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -25,7 +38,14 @@ import { TaskService} from './Services/task.service'
     MatPaginatorModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
   ],
   providers: [TaskService],
   bootstrap: [AppComponent]
