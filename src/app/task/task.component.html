@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 offset-md-2">
-        <app-add-task></app-add-task>
+        <app-add-task (AddTaskEvent)="RefreshTaskList($event)"></app-add-task>
       <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource">
 

@@ -7,4 +7,5 @@
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
   <button mat-button [mat-dialog-close]="data.title" (click)="AddTask(data)">Add</button>
+  <mat-spinner mode="indeterminate" diameter="20" *ngIf="showLoader"></mat-spinner>
 </div>

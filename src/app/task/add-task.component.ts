@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject,Output,EventEmitter } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { TaskService } from '../Services/task.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
@@ -11,6 +11,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class AddTaskComponent implements OnInit {
 
   title: string;
+  @Output() AddTaskEvent = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
@@ -22,6 +23,7 @@ export class AddTaskComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.AddTaskEvent.emit();
     });
   }
 
@@ -42,6 +44,7 @@ export interface DialogData {
 })
 export class AddTaskDialogComponent {
 
+  showLoader = false;
   constructor(
     public dialogRef: MatDialogRef<AddTaskDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
@@ -54,13 +57,11 @@ export class AddTaskDialogComponent {
   }
 
   AddTask(data){
-    console.log(data);
     this.service.AddTask(data).subscribe(responseData=>{
       this.snackbar.open(responseData.messgae,'close',{
         duration:5000
       })
     });
-
   }
 
 }
