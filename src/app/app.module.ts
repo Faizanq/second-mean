@@ -15,6 +15,7 @@ import {MatTableModule,
         MatInputModule,
         MatButtonModule,
         MatIconModule,
+        MatSortModule,
         MatProgressSpinnerModule,
 } from '@angular/material';
 
@@ -47,6 +48,7 @@ import { AddTaskComponent,AddTaskDialogComponent } from './task/add-task.compone
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    MatSortModule,
     MatProgressSpinnerModule,
   ],
   providers: [TaskService],

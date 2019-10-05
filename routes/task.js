@@ -6,7 +6,7 @@ const Task   = require('../models/task');
 //Get the all task
 routes.get('/',async (req,res)=>{
 
-  let tasks = await Task.find({});
+  let tasks = await Task.find({}).sort({_id:-1});
 
   res.json(tasks);
 });
@@ -14,6 +14,8 @@ routes.get('/',async (req,res)=>{
 
 //Add the task
 routes.post('/',(req,res)=>{
+
+  console.log(req.body);
 
   let task = new Task({
     title:req.body.title,

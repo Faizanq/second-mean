@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskService } from '../Services/task.service';
 import { TaskSchema } from '../Interface/task';
+import {MatSort} from '@angular/material/sort';
 
 @Component({
   selector: 'app-task',
@@ -16,6 +17,8 @@ export class TaskComponent implements OnInit {
   dataSource: MatTableDataSource<TaskSchema>;
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   constructor(private taskService: TaskService, private snackbar: MatSnackBar) {
 
@@ -30,6 +33,7 @@ export class TaskComponent implements OnInit {
 
       this.dataSource = new MatTableDataSource<TaskSchema>(responseData);
       this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     })
   }
 
